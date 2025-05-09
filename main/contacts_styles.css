@@ -1,0 +1,342 @@
+/* Загальні стилі для тіла сторінки */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+footer {
+    flex-shrink: 0;
+}
+
+/* Хедер */
+header {
+    background-color: #fff;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/* Гнучке позиціювання всередині контейнера */
+.header-flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* Розставляємо блоки за порядком */
+.left-block {
+  order: 1;
+  flex: 1 1 0;
+  display: flex;
+  align-items: center;
+}
+
+.logo-block {
+  order: 2;
+  flex: 0 1 auto;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.right-block {
+  order: 3;
+  flex: 1 1 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+/* Зображення логотипа */
+.logo img {
+    max-height: 70px;
+    height: auto;
+}
+
+/* Пошук */
+.search-form {
+    border: 2px solid #000;
+    border-radius: 30px;
+    padding: 4px 10px;
+    display: flex;
+    align-items: center;
+}
+
+.search-form input[type="search"] {
+    border: none;
+    outline: none;
+    box-shadow: none;
+    width: 200px;
+    font-size: 20px;
+}
+
+.search-form input[type="search"]::placeholder {
+    color: #000;
+}
+
+/* Посилання "Увійти" */
+.login-link {
+    color: #000;
+    font-size: 20px;
+    margin-left: 12px;
+    text-decoration: none;
+}
+
+.login-link:hover {
+    text-decoration: underline;
+}
+
+/* Кнопка з локацією */
+.cinema-location {
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* Адаптація на менших екранах */
+@media (max-width: 991.98px) {
+    .left-block,
+    .logo-block,
+    .right-block {
+        justify-content: center !important;
+        text-align: center;
+    }
+
+    .search-form input[type="search"] {
+        width: 100%;
+        max-width: 220px;
+    }
+
+    .header-flex {
+        gap: 15px;
+    }
+}
+
+
+
+
+
+/* Основна стилізація секцій */
+.section-block img,
+.dark-img {
+    max-height: 300px;
+    object-fit: contain;
+}
+
+.section-block h2 {
+    margin-bottom: 3rem;
+}
+
+.dark-block {
+    background-color: #000;
+    color: #fff;
+}
+
+.dark-block h2,
+.dark-block p {
+    color: #fff;
+}
+
+/* Стилізація кнопок */
+.btn-red {
+    background-color: #e50914;
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    padding: 12px 24px;
+    font-size: 20px;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    flex: 1 1 220px;
+    max-width: 280px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn-red:hover {
+    background-color: #b00610;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
+}
+
+.btn-red .icon {
+    width: 30px;
+    height: 30px;
+    margin-right: 8px;
+}
+
+/* Контейнери для питань і кнопок */
+.about-section {
+    margin-bottom: 80px;
+}
+
+.questions-section {
+    margin-bottom: 100px;
+}
+
+.buttons-wrapper {
+    margin-top: 80px;
+}
+
+
+
+/* Футер */
+.footer-social {
+  width: 24px;
+  height: 24px;
+  transition: transform 0.3s ease;
+}
+
+.social-icon {
+  width: 24px;
+  height: 24px;
+  transition: transform 0.3s ease;
+}
+
+.social-icon:hover {
+  transform: scale(1.1);
+}
+
+/* Додаткові стилі футера */
+.footer {
+  background-color: #fff;
+  padding-bottom: 24px;
+}
+
+.footer small {
+  display: inline-block;
+  margin-top: 12px;
+}
+
+.footer .copyright {
+  margin-top: 4rem;
+  padding-top: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+
+
+
+/* Основний контейнер бокового меню */
+.sidebar-menu {
+  position: fixed;
+  top: 0;
+  left: -300px;
+  width: 300px;
+  height: 100vh; /* Вся висота вікна */
+  background-color: #fff;
+  box-shadow: 4px 0 12px rgba(0, 0, 0, 0.2);
+  z-index: 1050;
+  transition: left 0.3s ease;
+
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* уникаємо горизонтального скролу */
+}
+
+/* Відкрите меню */
+.sidebar-menu.open {
+  left: 0;
+}
+
+/* Прокручувана частина меню */
+.sidebar-scrollable {
+  overflow-y: auto;
+  overflow-x: hidden;
+  flex: 1 1 auto;
+  padding: 0 1rem;
+}
+
+/* Затінення фону */
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 1040;
+  display: none;
+}
+
+.sidebar-overlay.show {
+  display: block;
+}
+
+/* Навігаційне меню */
+.sidebar-nav ul {
+  padding-left: 0;
+  margin: 0;
+}
+
+.sidebar-nav li {
+  margin-bottom: 16px;
+}
+
+.sidebar-nav a {
+  font-size: 22px;
+  color: #000;
+  text-decoration: none;
+  display: block;
+  transition: color 0.2s ease;
+}
+
+.sidebar-nav a:hover {
+  color: #e50914;
+}
+
+.sidebar-nav a.active {
+  color: #e50914;
+  font-weight: bold;
+  pointer-events: none;
+  cursor: default;
+}
+
+/* Соціальні іконки внизу */
+.sidebar-social {
+  flex-shrink: 0;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.sidebar-social img {
+  width: 30px;
+  height: 30px;
+  transition: transform 0.3s ease;
+}
+
+.sidebar-social img:hover {
+  transform: scale(1.1);
+}
+
+/* Хедер меню */
+.sidebar-header {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sidebar-header .logo {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.sidebar-header .logo img {
+  height: 70px;
+}

@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакти | OdysseyCinema</title>
+    <meta name="description" content="Дізнайтеся більше про різні кінотеатри мережі OdysseyCinema: місце розташування, час роботи, переваги та інше.">
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="contacts_styles.css">
+</head>
+<body class="d-flex flex-column min-vh-100">
+
+<header class="py-3 border-bottom">
+  <div class="container">
+    <div class="header-flex">
+      
+      <!-- Лівий блок -->
+      <div class="left-block">
+        <button class="btn btn-link p-0 me-3" id="menu-toggle">
+          <img src="img/header_imgs/list.png" alt="Меню" height="30">
+        </button>
+        <div class="location-wrapper position-relative">
+          <div class="cinema-location d-flex align-items-center" id="cinema-location-toggle" role="button">
+            <img src="img/header_imgs/map-pin.png" alt="Локація" width="30" height="30" class="me-1">
+            <span id="selected-location">Одеса, Fontan Sky Center</span>
+            <img src="img/header_imgs/caret-down.png" alt="Вибрати" height="30" class="ms-1">
+          </div>
+          <ul class="dropdown-menu shadow-sm" id="cinema-dropdown" style="display: none; position: absolute; top: 100%; left: 0;">
+            <li><a class="dropdown-item" href="#fontan-sky-center" data-location="Одеса, Fontan Sky Center">Одеса, Fontan Sky Center</a></li>
+            <li><a class="dropdown-item" href="#city-center" data-location="Одеса, City Center">Одеса, City Center</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Центр з логотипом -->
+      <div class="logo-block">
+        <a href="index.html" class="logo text-center d-block">
+          <img src="img/header_imgs/logo2.png" alt="OdysseyCinema">
+        </a>
+      </div>
+
+      <!-- Правий блок -->
+      <div class="right-block justify-content-end">
+        <form class="d-flex align-items-center me-3 search-form" role="search" action="#" method="get">
+          <img src="img/header_imgs/magnifying-glass.png" alt="Пошук" width="24" height="24" class="me-2">
+          <input class="form-control form-control-sm" type="search" name="q" placeholder="Знайти..." aria-label="Пошук">
+        </form>
+
+        <a href="#login" class="d-flex align-items-center text-decoration-none login-link">
+          <img src="img/header_imgs/user.png" alt="Увійти" width="30" height="30" class="me-1">
+          <span>Увійти</span>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</header>
+
+<!-- Бокове меню -->
+<div id="sidebar-menu" class="sidebar-menu">
+    <div class="sidebar-header d-flex flex-column align-items-center px-4 py-3">
+        <button id="close-menu" class="btn btn-link align-self-start mb-3 p-0">
+            <img src="img/header_imgs/x.png" alt="Закрити меню" height="30">
+        </button>
+        <a href="main.html" class="logo">
+            <img src="img/header_imgs/logo2.png" alt="OdysseyCinema" height="60">
+        </a>
+    </div>
+    <div class="sidebar-scrollable">
+        <nav class="sidebar-nav px-4">
+           <ul class="list-unstyled">
+                <li><a href="index.html">Головна</a></li>
+                <li><a href="#schedule">Розклад сеансів</a></li>
+                <li><a href="#promos">Акції та знижки</a></li>
+                <li><a href="contacts.html">Кінотеатри</a></li>
+                <li><a href="#refund">Повернення квитків</a></li>
+                <li><a href="#help">Допомога</a></li>
+                <li><a href="about_us.html">Про нас</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="sidebar-social d-flex justify-content-center gap-3 px-4 pb-4">
+        <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer">
+            <img src="img/footer_imgs/youtube.png" alt="YouTube" class="social-icon">
+        </a>
+        <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
+            <img src="img/footer_imgs/facebook.png" alt="Facebook" class="social-icon">
+        </a>
+        <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer">
+            <img src="img/footer_imgs/twitter.png" alt="Twitter" class="social-icon">
+        </a>
+        <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
+            <img src="img/footer_imgs/instagram.png" alt="Instagram" class="social-icon">
+        </a>
+    </div>
+
+</div>
+
+<!-- Затінення фону -->
+<div id="sidebar-overlay" class="sidebar-overlay"></div>
+
+<main class="about-section">
+    <!-- Блок 1 -->
+    <section class="section-block py-5">
+        <div class="container">
+            <h1 class="text-center fw-bold mb-5">Кінотеатри OdysseyCinema в Одесі</h1>
+            <div class="row">
+                <div class="col-md-6 mb-4 mb-md-0">
+                    <h2 class="fw-bold">Контакти</h2>
+                    <p>
+                        <strong>Телефон гарячої лінії:</strong> +38 (098) 765-43-21<br>
+                        <strong>Години роботи:</strong> Пн-Пт 9:00 – 21:00, Сб-Вс 12:00 - 20:00<br>
+                        <strong>Email:</strong> odyssey@cinema.ua
+                    </p>
+                </div>
+                <div class="col-md-6">
+                    <h2 class="fw-bold">Час роботи кінотеатрів</h2>
+                    <p>
+                        <strong>Каси:</strong> 10:00 - 20:00*<br>
+                        <strong>Зали:</strong> 10:00 - 20:00*<br>
+                        <strong>Гардероби:</strong> 10:00 - 20:00*
+                    </p>
+                    <p style="color: #888; font-size: 0.875rem; margin-top: 2rem;">
+                        *Час роботи кінотеатрів дійсний за умови відсутності повітряних тривог
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Блок 2 -->
+    <section class="section-block dark-block py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <div style="max-width: 550px;">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2748.342610999746!2d30.739264077398513!3d46.461721266331125!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40c633d638e80ef9%3A0xdf4aac093ce5dade!2z0KHQtdC80LDRhNC-0YDQvdC40Lkg0L_RgNC-0LLRg9C70L7QuiwgNCwg0J7QtNC10YHQsCwg0J7QtNC10YHRjNC60LAg0L7QsdC70LDRgdGC0YwsIDY1MDAw!5e0!3m2!1suk!2sua!4v1746773570084!5m2!1suk!2sua" 
+                            style="width: 100%; height: 450px; border:0; filter: invert(90%) hue-rotate(270deg) brightness(80%);"
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <h2 class="fw-bold">Fontan Sky Center<br>Семафорський провулок, 4</h2>
+                    <p>
+                        <strong>Кількість залів:</strong> 5 (IMAX, 4DX, VIP-зал)<br>
+                        <strong>Технології:</strong> Dolby Atmos, лазерні проектори 4K, 3D<br>
+                        <strong>Додаткові сервіси:</strong> бар із коктейлями, лаунж-зона, фотозона, дитяча зона<br>
+                        <strong>Спеціальні пропозиції:</strong> нічні кіномарафони, покази українського кіно, оренда залів для приватних заходів
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Блок 3 -->
+    <section class="section-block py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <h2 class="fw-bold">City Center<br>Небесної Сотні, 2</h2>
+                    <p>
+                        <strong>Кількість залів:</strong> 5 (LUX-зал, 3D-зал, стандартні зали)<br>
+                        <strong>Технології:</strong> Dolby Surround, 3D, SDH-субтитри для людей з порушеннями слуху<br>
+                        <strong>Додаткові сервіси:</strong> кафе з десертами, дитячі кінопокази, тематичні вечори<br>
+                        <strong>Спеціальні пропозиції:</strong> програма лояльності, знижки на ранкові сеанси, кіно-квести
+                    </p>
+                </div>
+                <div class="col-lg-6">
+                    <div style="max-width: 550px; margin-left: auto;">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2750.5882903120555!2d30.713613599999995!3d46.41721810000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40c6336d484e66ff%3A0xb0552fccde96ecc8!2z0L_RgNC-0YHQv9C10LrRgiDQndC10LHQtdGB0L3QvtGXINCh0L7RgtC90ZYsIDIsINCe0LTQtdGB0LAsINCe0LTQtdGB0YzQutCwINC-0LHQu9Cw0YHRgtGMLCA2NTAwMA!5e0!3m2!1suk!2sua!4v1746773539104!5m2!1suk!2sua" 
+                            style="width: 100%; height: 450px; border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer class="footer mt-auto pt-4 border-top">
+  <div class="container">
+    <div class="d-flex flex-column flex-lg-row justify-content-between align-items-center">
+
+      <!-- Порожній блок -->
+      <div class="footer-empty d-none d-lg-block" style="width: 150px;"></div>
+
+      <!-- Центрована навігація -->
+      <div class="d-flex flex-wrap justify-content-center align-items-center mb-3 mb-lg-0 gap-3">
+        <a href="#schedule" class="text-dark text-decoration-none">Розклад сеансів</a>
+        <div class="dropdown">
+          <a class="dropdown-toggle text-dark text-decoration-none" href="#" role="button" id="langDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+            <span id="selected-language">UA</span>
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="langDropdown">
+            <li><a class="dropdown-item" href="#ua">UA</a></li>
+            <li><a class="dropdown-item" href="#en">EN</a></li>
+            <li><a class="dropdown-item" href="#pig">RU</a></li>
+          </ul>
+        </div>
+        <a href="contacts.html" class="text-dark text-decoration-none">Контакти</a>
+        <a href="#faq" class="text-dark text-decoration-none">FAQ</a>
+        <a href="about_us.html" class="text-dark text-decoration-none">Про нас</a>
+      </div>
+
+      <!-- Соцмережі -->
+      <div class="d-flex align-items-center gap-3">
+        <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer">
+            <img src="img/footer_imgs/youtube.png" alt="YouTube" class="social-icon">
+        </a>
+        <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
+            <img src="img/footer_imgs/facebook.png" alt="Facebook" class="social-icon">
+        </a>
+        <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer">
+            <img src="img/footer_imgs/twitter.png" alt="Twitter" class="social-icon">
+        </a>
+        <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
+            <img src="img/footer_imgs/instagram.png" alt="Instagram" class="social-icon">
+        </a>
+      </div>
+    </div>
+
+    <!-- Авторські права -->
+    <div class="text-center small text-dark copyright">
+        OdysseyCinema 2025. Всі права захищено.
+    </div>
+
+  </div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    // ======= Вибір місця (хедер) =======
+    const toggle = document.getElementById('cinema-location-toggle');
+    const dropdown = document.getElementById('cinema-dropdown');
+    const selectedSpan = document.getElementById('selected-location');
+
+    // Встановити збережене місце з localStorage
+    const savedLocation = localStorage.getItem('selectedCinema');
+    if (savedLocation) {
+        selectedSpan.textContent = savedLocation;
+    }
+
+    // Перемикання випадаючого меню
+    toggle.addEventListener('click', function () {
+        dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+    });
+
+    // Обробка вибору локації
+    dropdown.addEventListener('click', function (e) {
+        if (e.target.matches('.dropdown-item')) {
+            const location = e.target.getAttribute('data-location');
+            selectedSpan.textContent = location;
+            localStorage.setItem('selectedCinema', location);
+            dropdown.style.display = 'none';
+        }
+    });
+
+    // Закриття меню при кліку поза ним
+    document.addEventListener('click', function (e) {
+        if (!toggle.contains(e.target) && !dropdown.contains(e.target)) {
+            dropdown.style.display = 'none';
+        }
+    });
+
+    // ======= Вибір мови (футер) =======
+    const langToggle = document.getElementById('langDropdown');
+    const langList = langToggle.nextElementSibling;
+    const selectedLangSpan = document.getElementById('selected-language');
+
+    // Встановити збережену мову з localStorage
+    const savedLang = localStorage.getItem('selectedLanguage');
+    if (savedLang) {
+        selectedLangSpan.textContent = savedLang;
+    }
+
+    // Обробка вибору мови
+    langList.addEventListener('click', function (e) {
+        if (e.target.matches('.dropdown-item')) {
+            const langCode = e.target.textContent.trim();
+            selectedLangSpan.textContent = langCode;
+            localStorage.setItem('selectedLanguage', langCode);
+        }
+    });
+});
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const sidebar = document.getElementById('sidebar-menu');
+    const overlay = document.getElementById('sidebar-overlay');
+    const openBtn = document.getElementById('menu-toggle');
+    const closeBtn = document.getElementById('close-menu');
+
+    // Відкриття меню
+    openBtn.addEventListener('click', function () {
+        sidebar.classList.add('open');
+        overlay.classList.add('show');
+    });
+
+    // Закриття меню
+    function closeSidebar() {
+        sidebar.classList.remove('open');
+        overlay.classList.remove('show');
+        openBtn.querySelector('img').src = 'img/header_imgs/list.png';
+    }
+
+    closeBtn.addEventListener('click', closeSidebar);
+    overlay.addEventListener('click', closeSidebar);
+
+    // Закриття при переході по посиланню
+    sidebar.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', closeSidebar);
+    });
+});
+</script>
+
+<script>
+// Визначення активного посилання за URL
+document.addEventListener('DOMContentLoaded', function () {
+    const currentPage = location.pathname.split('/').pop(); // Наприклад: 'about_us.html'
+    const sidebarLinks = document.querySelectorAll('#sidebar-menu a');
+
+    sidebarLinks.forEach(link => {
+        const linkPage = link.getAttribute('href');
+        if (linkPage === currentPage) {
+            link.classList.add('active');
+        }
+    });
+});
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
