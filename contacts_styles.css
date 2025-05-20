@@ -17,6 +17,8 @@ footer {
     flex-shrink: 0;
 }
 
+
+
 /* Хедер */
 header {
     background-color: #fff;
@@ -65,27 +67,6 @@ header {
     height: auto;
 }
 
-/* Пошук */
-.search-form {
-    border: 2px solid #000;
-    border-radius: 30px;
-    padding: 4px 10px;
-    display: flex;
-    align-items: center;
-}
-
-.search-form input[type="search"] {
-    border: none;
-    outline: none;
-    box-shadow: none;
-    width: 200px;
-    font-size: 20px;
-}
-
-.search-form input[type="search"]::placeholder {
-    color: #000;
-}
-
 /* Посилання "Увійти" */
 .login-link {
     color: #000;
@@ -104,22 +85,209 @@ header {
     cursor: pointer;
 }
 
-/* Адаптація на менших екранах */
+/* Ці стилі адаптації стосуються тільки 
+ * форми пошуку та вибору поточного кінотеатру */
+
+/* Показуємо тільки на великих екранах */
+#desktop-search-form {
+  display: none;
+}
+
+@media (min-width: 992px) {
+  #desktop-search-form {
+    display: flex;
+    border: 2px solid #000;
+    border-radius: 30px;
+    padding: 4px 10px;
+    align-items: center;
+  }
+
+  #desktop-search-form input[type="search"] {
+    border: none;
+    outline: none;
+    box-shadow: none;
+    width: 200px;
+    font-size: 20px;
+  }
+
+  #desktop-search-form input[type="search"]::placeholder {
+    color: #000;
+  }
+}
+
 @media (max-width: 991.98px) {
-    .left-block,
-    .logo-block,
-    .right-block {
-        justify-content: center !important;
-        text-align: center;
+  #mobile-search-form input[type="search"] {
+    width: 100%;
+    font-size: 16px;
+    border: none;
+    outline: none;
+    box-shadow: none;
+  }
+
+  #mobile-search-form input[type="search"]::placeholder {
+    color: #000;
+  }
+
+  /* Приховуємо десктопну форму на малих екранах */
+  #desktop-search-form {
+    display: none !important;
+  }
+
+  /* Приховуємо location-wrapper, як потрібно */
+  .location-wrapper {
+    display: none !important;
+  }
+
+  /* Загальні адаптивні зміни */
+  .login-link {
+    font-size: 16px;
+  }
+
+  .cinema-location {
+    font-size: 16px;
+  }
+
+  .logo img {
+    max-height: 50px;
+  }
+
+  .header-flex {
+    gap: 8px;
+  }
+}
+
+/* Приховано за замовчуванням */
+#mobile-search-form {
+  display: none;
+  position: absolute;
+  top: 40px; /* трохи нижче іконки */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1001;
+  background-color: #fff;
+  padding: 5px 10px;
+  border: 2px solid #000;
+  border-radius: 30px;
+  width: 80vw;
+  max-width: 320px;
+}
+
+/* Показуємо при наявності класу .show */
+#mobile-search-form.show {
+  display: flex;
+  align-items: center;
+}
+
+/* Ці стилі загалом адаптують елементи в
+ * хедері */
+
+/* Адаптація на менших екранах */
+@media (max-width: 575.98px) {
+  .left-block,
+  .logo-block,
+  .right-block {
+      justify-content: center !important;
+      text-align: center;
+  }
+
+  #menu-toggle img,
+  #search-toggle img,
+  .login-link img {
+    width: 22px;
+    height: 22px;
+  }
+
+  #mobile-search-form {
+    width: 90vw;
+    max-width: 220px;
+    padding: 4px 8px;
+  }
+
+  #mobile-search-form input[type="search"] {
+    font-size: 16px;
+  }
+
+  .login-link {
+    font-size: 16px;
+  }
+
+  .cinema-location {
+    font-size: 16px;
+  }
+
+  .logo img {
+    max-height: 50px;
+  }
+
+  .header-flex {
+    gap: 8px;
+  }
+}
+
+@media (max-width: 991.98px) and (min-width: 576px) {
+  .left-block,
+  .logo-block,
+  .right-block {
+      justify-content: center !important;
+      text-align: center;
+  }
+
+  #search-form {
+    display: none;
+  }
+
+  #menu-toggle img,
+  #search-toggle img,
+  .login-link img {
+    width: 26px;
+    height: 26px;
+  }
+
+  /* Мобільне поле трохи ширше */
+  #mobile-search-form {
+    width: 85vw;
+    max-width: 260px;
+    padding: 5px 10px;
+  }
+
+  #mobile-search-form input[type="search"] {
+    font-size: 18px;
+    max-width: 180px;
+  }
+
+  .login-link {
+    font-size: 18px;
+  }
+
+  .cinema-location {
+    font-size: 18px;
+  }
+
+  .logo img {
+    max-height: 55px;
+  }
+
+  .header-flex {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 1199.98px) and (min-width: 992px) {
+    #desktop-search-form input[type="search"] {
+      width: 200px;
+      font-size: 20px;
     }
 
-    .search-form input[type="search"] {
-        width: 100%;
-        max-width: 220px;
+    .login-link {
+        font-size: 20px;
     }
 
-    .header-flex {
-        gap: 15px;
+    .cinema-location {
+        font-size: 20px;
+    }
+
+    .logo img {
+        max-height: 60px;
     }
 }
 
@@ -127,9 +295,7 @@ header {
 
 
 
-/* Основна стилізація секцій */
-.section-block img,
-.dark-img {
+.section-block img {
     max-height: 300px;
     object-fit: contain;
 }
@@ -148,7 +314,16 @@ header {
     color: #fff;
 }
 
-/* Стилізація кнопок */
+.dark-img {
+    max-height: 300px;
+    object-fit: contain;
+}
+
+.about-section {
+    margin-bottom: 4rem; /* Було 80px — тепер відносно */
+}
+
+/* Стилі для червоних кнопок */
 .btn-red {
     background-color: #e50914;
     color: #fff;
@@ -161,47 +336,177 @@ header {
     align-items: center;
     justify-content: center;
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     flex: 1 1 220px;
     max-width: 280px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+    text-align: center;
+    white-space: normal; /* дозволяємо перенос */
+    min-height: 64px; /* однакова висота */
+    line-height: 1.2;
 }
 
-.btn-red:hover {
-    background-color: #b00610;
-    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
-}
-
+/* Іконки в кнопках */
 .btn-red .icon {
     width: 30px;
     height: 30px;
     margin-right: 8px;
 }
 
-/* Контейнери для питань і кнопок */
-.about-section {
-    margin-bottom: 80px;
+/* Hover-ефект */
+.btn-red:hover {
+    background-color: #b00610;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3); /* глибша тінь при наведенні */
 }
 
 .questions-section {
-    margin-bottom: 100px;
+    margin-bottom: 4rem; /* Було 100px — тепер адаптивно */
 }
 
+/* Відступ над кнопками */
 .buttons-wrapper {
-    margin-top: 80px;
+    margin-top: 4rem !important; /* Було 80px */
+}
+
+/* Усуває зайвий відступ після останньої кнопки */
+.buttons-wrapper .btn-red:last-child {
+    margin-bottom: 0;
+}
+
+@media (max-width: 575.98px) {
+    .about-section {
+        margin-bottom: 3rem;
+    }
+
+    .questions-section {
+        margin-bottom: 3rem;
+    }
+
+    .buttons-wrapper {
+        margin-top: 2rem !important;
+    }
+
+    .btn-red {
+        font-size: 1rem;
+        padding: 10px 20px;
+        min-height: 56px;
+    }
+
+    .btn-red .icon {
+        width: 24px;
+        height: 24px;
+    }
+
+    .section-block h2 {
+        font-size: 1.4rem;
+        margin-bottom: 2rem;
+    }
+
+    .section-block p {
+        font-size: 1rem;
+    }
+
+    .section-block img,
+    .dark-img {
+        max-height: 200px;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 991.98px) {
+    .about-section {
+        margin-bottom: 3.5rem;
+    }
+
+    .questions-section {
+        margin-bottom: 3.5rem;
+    }
+
+    .buttons-wrapper {
+        margin-top: 3rem !important;
+    }
+
+    .btn-red {
+        font-size: 1.05rem;
+        padding: 10px 22px;
+        min-height: 60px;
+    }
+
+    .btn-red .icon {
+        width: 26px;
+        height: 26px;
+    }
+
+    .section-block h2 {
+        font-size: 1.6rem;
+        margin-bottom: 2.5rem;
+    }
+
+    .section-block p {
+        font-size: 1.05rem;
+    }
+
+    .section-block img,
+    .dark-img {
+        max-height: 240px;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    .about-section {
+        margin-bottom: 4rem;
+    }
+
+    .questions-section {
+        margin-bottom: 4rem;
+    }
+
+    .buttons-wrapper {
+        margin-top: 3.5rem !important;
+    }
+
+    .btn-red {
+        font-size: 1.1rem;
+        padding: 12px 24px;
+        min-height: 64px;
+    }
+
+    .btn-red .icon {
+        width: 28px;
+        height: 28px;
+    }
+
+    .section-block h2 {
+        font-size: 1.8rem;
+        margin-bottom: 3rem;
+    }
+
+    .section-block p {
+        font-size: 1.1rem;
+    }
+
+    .section-block img,
+    .dark-img {
+        max-height: 280px;
+    }
+}
+
+@media (max-width: 992px) {
+  /* Центруємо зображення, якщо воно стало на новий рядок */
+  .section-block .col-md-6 img,
+  .section-block .col-lg-6 img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
 }
 
 
 
-/* Футер */
-.footer-social {
-  width: 24px;
-  height: 24px;
-  transition: transform 0.3s ease;
-}
-
+/* Соцмережі: базовий розмір */
 .social-icon {
-  width: 24px;
-  height: 24px;
+  width: 32px;
+  height: 32px;
   transition: transform 0.3s ease;
 }
 
@@ -209,10 +514,12 @@ header {
   transform: scale(1.1);
 }
 
-/* Додаткові стилі футера */
+/* Загальний вигляд футера */
 .footer {
   background-color: #fff;
   padding-bottom: 24px;
+  font-size: 18px; /* Збільшений базовий шрифт */
+  word-wrap: break-word;
 }
 
 .footer small {
@@ -224,6 +531,40 @@ header {
   margin-top: 4rem;
   padding-top: 0.5rem;
   margin-bottom: 2rem;
+  text-align: center;
+}
+
+@media (max-width: 575.98px) {
+  .footer {
+    font-size: 16px;
+  }
+
+  .social-icon {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 991.98px) {
+  .footer {
+    font-size: 17px;
+  }
+
+  .social-icon {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .footer {
+    font-size: 18px;
+  }
+
+  .social-icon {
+    width: 32px;
+    height: 32px;
+  }
 }
 
 
@@ -233,8 +574,8 @@ header {
 .sidebar-menu {
   position: fixed;
   top: 0;
-  left: -300px;
-  width: 300px;
+  left: -350px;
+  width: 350px;
   height: 100vh; /* Вся висота вікна */
   background-color: #fff;
   box-shadow: 4px 0 12px rgba(0, 0, 0, 0.2);
@@ -282,7 +623,7 @@ header {
 }
 
 .sidebar-nav li {
-  margin-bottom: 16px;
+  margin-bottom: 20px;
 }
 
 .sidebar-nav a {
@@ -314,8 +655,8 @@ header {
 }
 
 .sidebar-social img {
-  width: 30px;
-  height: 30px;
+  width: 34px;
+  height: 34px;
   transition: transform 0.3s ease;
 }
 
@@ -339,4 +680,117 @@ header {
 
 .sidebar-header .logo img {
   height: 70px;
+}
+
+#close-menu img {
+  height: 32px;
+}
+
+@media (max-width: 575.98px) {
+  .sidebar-menu {
+    width: 270px;
+    left: -270px;
+  }
+
+  .sidebar-menu.open {
+    left: 0;
+  }
+
+  .sidebar-nav a {
+    font-size: 18px;
+    padding: 0.4rem 0;
+    text-align: left;
+  }
+
+  .sidebar-nav li {
+    margin-bottom: 12px;
+  }
+
+  .sidebar-header {
+    padding: 1rem;
+  }
+
+  .sidebar-header .logo img {
+    height: 50px;
+  }
+
+  #close-menu img {
+    height: 24px;
+  }
+
+  .sidebar-social {
+    gap: 0.5rem;
+    padding-bottom: 1rem;
+  }
+
+  .sidebar-social img {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 991.98px) {
+  .sidebar-menu {
+    width: 300px;
+    left: -300px;
+  }
+
+  .sidebar-menu.open {
+    left: 0;
+  }
+
+  .sidebar-nav a {
+    font-size: 20px;
+    text-align: left;
+  }
+
+  .sidebar-nav li {
+    margin-bottom: 16px;
+  }
+
+  .sidebar-header .logo img {
+    height: 60px;
+  }
+
+  #close-menu img {
+    height: 28px;
+  }
+
+  .sidebar-social img {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .sidebar-menu {
+    width: 320px;
+    left: -320px;
+  }
+
+  .sidebar-menu.open {
+    left: 0;
+  }
+
+  .sidebar-nav a {
+    font-size: 21px;
+    text-align: left;
+  }
+
+  .sidebar-nav li {
+    margin-bottom: 18px;
+  }
+
+  .sidebar-header .logo img {
+    height: 65px;
+  }
+
+  #close-menu img {
+    height: 30px;
+  }
+
+  .sidebar-social img {
+    width: 32px;
+    height: 32px;
+  }
 }

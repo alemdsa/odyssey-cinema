@@ -42,19 +42,33 @@
       </div>
 
       <!-- Правий блок -->
-      <div class="right-block justify-content-end">
-        <form class="d-flex align-items-center me-3 search-form" role="search" action="#" method="get">
-          <img src="img/header_imgs/magnifying-glass.png" alt="Пошук" width="24" height="24" class="me-2">
-          <input class="form-control form-control-sm" type="search" name="q" placeholder="Знайти..." aria-label="Пошук">
-        </form>
+      <div class="right-block justify-content-end align-items-center">
+          <!-- Пошук для великих екранів -->
+          <form id="desktop-search-form" class="search-form d-none d-lg-flex align-items-center me-3" role="search" action="#" method="get">
+            <img src="img/header_imgs/magnifying-glass.png" alt="Пошук" width="24" height="24" class="me-2">
+            <input class="form-control form-control-sm" type="search" name="q" placeholder="Знайти..." aria-label="Пошук">
+          </form>
 
-        <a href="#login" class="d-flex align-items-center text-decoration-none login-link">
-          <img src="img/header_imgs/user.png" alt="Увійти" width="30" height="30" class="me-1">
-          <span>Увійти</span>
-        </a>
-      </div>
+          <!-- Пошук для малих екранів -->
+          <div id="mobile-search-wrapper" class="position-relative d-lg-none me-3">
+            <!-- Іконка -->
+            <button id="search-toggle" class="btn p-0" type="button" aria-label="Відкрити пошук">
+              <img src="img/header_imgs/magnifying-glass.png" alt="Пошук" width="24" height="24">
+            </button>
 
-    </div>
+            <!-- Випадаюче поле пошуку -->
+            <form id="mobile-search-form" class="search-form position-absolute" role="search" action="#" method="get">
+              <input class="form-control form-control-sm" type="search" name="q" placeholder="Знайти..." aria-label="Пошук">
+            </form>
+          </div>
+
+          <!-- Кнопка входу -->
+          <a href="#login" class="d-flex align-items-center text-decoration-none login-link">
+            <img src="img/header_imgs/user.png" alt="Увійти" width="30" height="30" class="me-1">
+            <span>Увійти</span>
+          </a>
+        </div>
+
   </div>
 </header>
 
@@ -65,9 +79,22 @@
         <button id="close-menu" class="btn btn-link align-self-start mb-3 p-0">
             <img src="img/header_imgs/x.png" alt="Закрити меню" height="30">
         </button>
-        <a href="main.html" class="logo">
+        <a href="index.html" class="logo">
             <img src="img/header_imgs/logo2.png" alt="OdysseyCinema" height="60">
         </a>
+
+        <div class="sidebar-location-wrapper w-100 mt-3 d-block d-lg-none">
+            <div class="cinema-location d-flex align-items-center" id="sidebar-cinema-location-toggle" role="button">
+                <img src="img/header_imgs/map-pin.png" alt="Локація" width="30" height="30" class="me-1">
+                <span id="sidebar-selected-location">Одеса, Fontan Sky Center</span>
+                <img src="img/header_imgs/caret-down.png" alt="Вибрати" height="30" class="ms-1">
+            </div>
+            <ul class="dropdown-menu shadow-sm mt-2" id="sidebar-cinema-dropdown" style="display: none; position: relative;">
+                <li><a class="dropdown-item" href="#fontan-sky-center" data-location="Одеса, Fontan Sky Center">Одеса, Fontan Sky Center</a></li>
+                <li><a class="dropdown-item" href="#city-center" data-location="Одеса, City Center">Одеса, City Center</a></li>
+            </ul>
+        </div>
+
     </div>
     <div class="sidebar-scrollable">
         <nav class="sidebar-nav px-4">
@@ -106,7 +133,7 @@
 
 
 
-<div class="banner mb-4">
+<div class="banner">
   <div id="bannerCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
     <div class="carousel-inner">
       <div class="carousel-item active">
@@ -136,22 +163,40 @@
 
 
 <!-- Головна сторінка -->
-    <main class="container my-4">
-      <div class="d-flex align-items-center justify-content-between mb-5">
-        <button class="btn btn-filter d-flex align-items-center">
-          <span class="me-2">Фільтри</span>
-          <img src="img/index_imgs/filters.png" alt="Іконка фільтру" width="24" height="24">
-        </button>
+    <main class="container my-3">
+      <div class="py-3 my-4">
+        <div class="container">
+          <div class="schedule-flex">
+            
+            <!-- Кнопка фільтрів -->
+            <div class="schedule-left">
+              <button class="btn-filter">
+                <img src="img/index_imgs/filters.png" alt="Фільтри">
+                Фільтри
+              </button>
+            </div>
 
-        <h2 class="m-0 flex-grow-1 text-center fw-semibold text-black" style="font-size: 32px;">
-          Розклад поточних сеансів
-        </h2>
+            <!-- Заголовок -->
+            <div class="schedule-center">
+              <h2 class="schedule-heading">
+                <b>
+                  Розклад поточних сеансів
+                </b>
+              </h2>
+            </div>
 
-        <button class="btn btn-calendar d-flex align-items-center">
-          <span class="me-2">Сьогодні, 1 квітня</span>
-          <img src="img/index_imgs/calendar.png" alt="Іконка календаря" width="24" height="24">
-        </button>
+            <!-- Кнопка календаря -->
+            <div class="schedule-right">
+              <button class="btn-calendar">
+                <img src="img/index_imgs/calendar.png" alt="Сьогодні">
+                Сьогодні, 1 квітня
+              </button>
+            </div>
+
+          </div>
+        </div>
       </div>
+
 
       <!-- Сеанси -->
       <div class="row film-schedule row-cols-1 row-cols-md-2 g-4">
@@ -264,38 +309,39 @@
       </div>
 
       <!-- Короткий опис -->
-      <div class="container px-3 my-5">
-        <div class="row align-items-center">
-          <div class="col-md-5">
-            <img src="img/index_imgs/empty-cinema.png" alt="Кінотеатр" class="img-fluid">
-          </div>
-          <div class="col-md-7 ps-md-5" style="padding-left: 140px !important">
-            <h3 style="font-size: 48px; font-weight: 500; margin-bottom: 32px">
-              OdysseyCinema
-            </h3>
-            <p>
-              Це місце, де кожен сеанс перетворюється на подію! Ми працюємо з
-              2015 року та пропонуємо найкращий кінодосвід у місті. У нас є 5
-              сучасних кінозалів, включаючи IMAX, Dolby Atmos та VIP-зону з
-              комфортними диванами.
-            </p>
+      <main class="container my-4 odyssey-section">
+        <div class="container px-3 my-5">
+          <div class="row align-items-center odyssey-content">
+            <div class="col-md-5 image-col">
+              <img src="img/index_imgs/empty-cinema.png" alt="Кінотеатр" class="img-fluid">
+            </div>
+            <div class="col-md-7 text-col">
+              <h3>OdysseyCinema</h3>
+              <p>
+                Це місце, де кожен сеанс перетворюється на подію! Ми працюємо з
+                2015 року та пропонуємо найкращий кінодосвід у місті. У нас є 5
+                сучасних кінозалів, включаючи IMAX, Dolby Atmos та VIP-зону з
+                комфортними диванами.
+              </p>
+            </div>
           </div>
         </div>
-      </div>
+      </main>
 
       <div class="mb-5 text-center">
         <h3 style="font-size: 36px; font-weight: 900">
           Так чому ж обирають саме нас?
         </h3>
       </div>
-      <div class="row row-cols-1 row-cols-md-3 g-4 text-start border-top">
+
+      <div class="row row-cols-1 row-cols-lg-3 g-4 text-start border-top">
         <!-- 1 -->
         <div class="col">
           <div class="d-flex align-items-center grid-item">
             <div class="icon-circle me-3 flex-shrink-0">
               <img src="img/index_imgs/film-strip.png" alt="Іконка" width="30">
             </div>
-            <div>
+            <div class="grid-text">
               <h5 class="grid-item-label">Технології майбутнього</h5>
               <p class="grid-item-subtext">
                 4K-проекція, об'ємний звук, величезні екрани!
@@ -310,7 +356,7 @@
             <div class="icon-circle me-3 flex-shrink-0">
               <img src="img/index_imgs/popcorn.png" alt="Іконка" width="30">
             </div>
-            <div>
+            <div class="grid-text">
               <h5 class="grid-item-label">Унікальний бар</h5>
               <p class="grid-item-subtext">
                 Фірмовий попкорн із карамеллю, сиром або навіть трюфелем!
@@ -325,7 +371,7 @@
             <div class="icon-circle me-3 flex-shrink-0">
               <img src="img/index_imgs/ticket.png" alt="Іконка" width="30">
             </div>
-            <div>
+            <div class="grid-text">
               <h5 class="grid-item-label">Зручність</h5>
               <p class="grid-item-subtext">
                 Швидке онлайн-бронювання та електронні квитки!
@@ -340,7 +386,7 @@
             <div class="icon-circle me-3 flex-shrink-0">
               <img src="img/index_imgs/movie.png" alt="Іконка" width="30">
             </div>
-            <div>
+            <div class="grid-text">
               <h5 class="grid-item-label">Кіно без меж</h5>
               <p class="grid-item-subtext">
                 Фестивальні покази та культові ретроспективи!
@@ -355,7 +401,7 @@
             <div class="icon-circle me-3 flex-shrink-0">
               <img src="img/index_imgs/discount.png" alt="Іконка" width="30">
             </div>
-            <div>
+            <div class="grid-text">
               <h5 class="grid-item-label">Програма лояльності</h5>
               <p class="grid-item-subtext">
                 Знижки, бонуси та приємні сюрпризи для постійних гостей!
@@ -370,7 +416,7 @@
             <div class="icon-circle me-3 flex-shrink-0">
               <img src="img/index_imgs/three-guys.png" alt="Іконка" width="30">
             </div>
-            <div>
+            <div class="grid-text">
               <h5 class="grid-item-label">Розваги для всіх</h5>
               <p class="grid-item-subtext">
                 Інтерактивні кіноподії, тематичні вечори та кіноквести!
@@ -435,58 +481,72 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
-    // ======= Вибір місця (хедер) =======
-    const toggle = document.getElementById('cinema-location-toggle');
-    const dropdown = document.getElementById('cinema-dropdown');
-    const selectedSpan = document.getElementById('selected-location');
-
-    // Встановити збережене місце з localStorage
-    const savedLocation = localStorage.getItem('selectedCinema');
-    if (savedLocation) {
-        selectedSpan.textContent = savedLocation;
+  // ======= Вибір місця (хедер і сайдбар) =======
+  const locationSelectors = [
+    {
+      toggle: document.getElementById('cinema-location-toggle'),
+      dropdown: document.getElementById('cinema-dropdown'),
+      span: document.getElementById('selected-location'),
+    },
+    {
+      toggle: document.getElementById('sidebar-cinema-location-toggle'),
+      dropdown: document.getElementById('sidebar-cinema-dropdown'),
+      span: document.getElementById('sidebar-selected-location'),
     }
+  ];
 
+  // Встановити збережене місце з localStorage
+  const savedLocation = localStorage.getItem('selectedCinema');
+  if (savedLocation) {
+    locationSelectors.forEach(loc => loc.span.textContent = savedLocation);
+  }
+
+  locationSelectors.forEach(({ toggle, dropdown, span }) => {
     // Перемикання випадаючого меню
-    toggle.addEventListener('click', function () {
-        dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+    toggle.addEventListener('click', function (e) {
+      e.stopPropagation(); // Щоб не викликалося глобальне закриття
+      dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
     });
 
-    // Обробка вибору локації
+    // Обробка вибору
     dropdown.addEventListener('click', function (e) {
-        if (e.target.matches('.dropdown-item')) {
-            const location = e.target.getAttribute('data-location');
-            selectedSpan.textContent = location;
-            localStorage.setItem('selectedCinema', location);
-            dropdown.style.display = 'none';
-        }
+      if (e.target.matches('.dropdown-item')) {
+        const location = e.target.getAttribute('data-location');
+        locationSelectors.forEach(loc => loc.span.textContent = location);
+        localStorage.setItem('selectedCinema', location);
+        dropdown.style.display = 'none';
+      }
     });
+  });
 
-    // Закриття меню при кліку поза ним
-    document.addEventListener('click', function (e) {
-        if (!toggle.contains(e.target) && !dropdown.contains(e.target)) {
-            dropdown.style.display = 'none';
-        }
+  // Закриття всіх dropdown при кліку поза ними
+  document.addEventListener('click', function (e) {
+    locationSelectors.forEach(({ toggle, dropdown }) => {
+      if (!toggle.contains(e.target) && !dropdown.contains(e.target)) {
+        dropdown.style.display = 'none';
+      }
     });
+  });
 
-    // ======= Вибір мови (футер) =======
-    const langToggle = document.getElementById('langDropdown');
-    const langList = langToggle.nextElementSibling;
-    const selectedLangSpan = document.getElementById('selected-language');
+  // ======= Вибір мови (футер) =======
+  const langToggle = document.getElementById('langDropdown');
+  const langList = langToggle?.nextElementSibling;
+  const selectedLangSpan = document.getElementById('selected-language');
 
-    // Встановити збережену мову з localStorage
-    const savedLang = localStorage.getItem('selectedLanguage');
-    if (savedLang) {
-        selectedLangSpan.textContent = savedLang;
-    }
+  const savedLang = localStorage.getItem('selectedLanguage');
+  if (savedLang) {
+    selectedLangSpan.textContent = savedLang;
+  }
 
-    // Обробка вибору мови
+  if (langList) {
     langList.addEventListener('click', function (e) {
-        if (e.target.matches('.dropdown-item')) {
-            const langCode = e.target.textContent.trim();
-            selectedLangSpan.textContent = langCode;
-            localStorage.setItem('selectedLanguage', langCode);
-        }
+      if (e.target.matches('.dropdown-item')) {
+        const langCode = e.target.textContent.trim();
+        selectedLangSpan.textContent = langCode;
+        localStorage.setItem('selectedLanguage', langCode);
+      }
     });
+  }
 });
 </script>
 
@@ -533,6 +593,68 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
+</script>
+
+<script>
+  const searchToggle = document.getElementById('search-toggle');
+  const mobileSearchForm = document.getElementById('mobile-search-form');
+
+  if (searchToggle && mobileSearchForm) {
+    searchToggle.addEventListener('click', () => {
+      mobileSearchForm.classList.toggle('show');
+    });
+
+    // Закриваємо при втраті фокусу
+    mobileSearchForm.querySelector('input[type="search"]').addEventListener('blur', () => {
+      mobileSearchForm.classList.remove('show');
+    });
+
+    // Закриваємо після відправки
+    mobileSearchForm.addEventListener('submit', (e) => {
+      mobileSearchForm.classList.remove('show');
+    });
+  }
+</script>
+
+<script>
+  function adaptScheduleLayout() {
+    const container = document.querySelector('.schedule-flex');
+    const left = document.querySelector('.schedule-left');
+    const center = document.querySelector('.schedule-center');
+    const right = document.querySelector('.schedule-right');
+
+    // Очистити контейнер
+    container.innerHTML = '';
+
+    if (window.innerWidth <= 991.98) {
+      // Створити нову структуру: два блоки
+      const row1 = document.createElement('div');
+      const row2 = document.createElement('div');
+
+      row1.className = 'schedule-row schedule-row1';
+      row2.className = 'schedule-row schedule-row2';
+
+      // Додаємо центр у перший рядок
+      row1.appendChild(center);
+      // Додаємо фільтр і календар у другий рядок
+      row2.appendChild(left);
+      row2.appendChild(right);
+
+      // Додаємо обидва рядки до контейнера
+      container.appendChild(row1);
+      container.appendChild(row2);
+    } else {
+      // Повертаємо початкову структуру
+      container.appendChild(left);
+      container.appendChild(center);
+      container.appendChild(right);
+    }
+  }
+
+  // Виконати при завантаженні
+  window.addEventListener('DOMContentLoaded', adaptScheduleLayout);
+  // Виконати при зміні розміру вікна
+  window.addEventListener('resize', adaptScheduleLayout);
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
